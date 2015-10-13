@@ -30,29 +30,29 @@ public class Console {
 		breakStar();
 		System.out.println("Enter a number in the menu and press enter.");
 		breakStar();
-		int i = 1;
+		int menuNr = 1;
 		for(Event e : Event.values()) {
 			if(e != Event.NONE) {
-				System.out.println(i + ".\t" + e.toString().replaceAll("_", " "));
+				System.out.println(menuNr + ".\t" + e.toString().replaceAll("_", " "));
 			}
-			++i;
+			++menuNr;
 		}
 		breakLine();
 	}
 	
 	public void displayBoatTypeMenu() {
-		int i = 1;
+		int menuNr = 1;
 		for(model.Boat.BoatType type : model.Boat.BoatType.values()) {
-			System.out.println(i + ". " + type);
-			++i;
+			System.out.println(menuNr + ". " + type);
+			++menuNr;
 		}
 	}
 	
 	public Event getEvent() {
-		int i = getInt();
+		int eventNr = getInt();
 		Event e;
 		blankLines(2);
-		switch(i) {
+		switch(eventNr) {
 		case 1: 
 			e = Event.NEW_MEMBER;
 			displayHeadline("Register new member");
@@ -145,10 +145,13 @@ public class Console {
 	}
 	
 	public model.Boat.BoatType getBoatType() {
-		displayCommand("Enter boat type (by number)...");
-		int i = getInt();
+		int typeNr;
+		do {
+			displayCommand("Enter boat type (by number)...");
+			typeNr = getInt();
+		} while (typeNr < 1 || typeNr > model.Boat.BoatType.values().length);
 		breakLine();
-		return model.Boat.BoatType.values()[i - 1];
+		return model.Boat.BoatType.values()[typeNr - 1];
 	}
 	
 	public double getBoatLength() {

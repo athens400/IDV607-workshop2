@@ -16,16 +16,16 @@ public class MemberRegistry {
 	}
 	
 	public void importList() {
-		persistence.Storage s = new persistence.Storage();
-		List<Member> members = s.load();
+		persistence.Storage storage = new persistence.Storage();
+		List<Member> members = storage.load();
 		if(members != null) {
 			this.members = members;
 		}
 	}
 	
 	public void exportList() {
-		persistence.Storage s = new persistence.Storage();
-		s.save(members);
+		persistence.Storage storage = new persistence.Storage();
+		storage.save(members);
 	}
 	
 	public void addMember(String name, long pNr) {
@@ -75,10 +75,10 @@ public class MemberRegistry {
 	}
 	
 	private void resetMemberIds() {
-		int i = 1;
+		int id = 1;
 		for(Member member : members) {
-			member.setId(i);
-			++i;
+			member.setId(id);
+			++id;
 		}
 	}
 	
