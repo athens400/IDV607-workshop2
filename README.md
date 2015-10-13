@@ -1,9 +1,7 @@
 # IDV607-workshop2
 
-Workshop 2
-==========
 
-The application was written in java using Eclipse (compliance level 1.5)
+The application was written in java using Eclipse (compliance level 1.5) by Daniel Svensson (athens400@gmail.com).
 
 
 Run HappyPirate.jar (windows):
